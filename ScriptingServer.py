@@ -1,4 +1,4 @@
-from Challenges import ChallengeManager
+from BasicChallenges import BasicChallengeManager
 from Communications import *
 import threading
 import sys
@@ -25,7 +25,7 @@ class ScriptingVault:
         self.server = Server(bind_address, bind_port)
 
         # Create challenges manager
-        self.challenges_manager = ChallengeManager()
+        self.challenges_manager = BasicChallengeManager()
 
     def run(self):
         # Display running state

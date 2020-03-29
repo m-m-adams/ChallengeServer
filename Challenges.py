@@ -6,7 +6,7 @@
 """ Imports """
 import random
 import time
-
+import os
 """ Module methods """
 
 
@@ -21,8 +21,8 @@ def load_word_list(path):
 
 
 """ Module constants """
-
-WORD_LIST = load_word_list("./wordlist.txt")
+CurrentPath=os.path.dirname(os.path.abspath(__file__))
+WORD_LIST = load_word_list(os.path.join(CurrentPath,"wordlist.txt"))
 
 """ Class definitions """
 

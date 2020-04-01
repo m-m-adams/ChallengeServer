@@ -7,6 +7,7 @@
 import random
 import time
 import os
+from flags import *
 """ Module methods """
 
 
@@ -203,7 +204,7 @@ class UpperAndLower(ChallengeAbstract):
 
     def run(self):
         # Define the challenge's flag
-        flag = "Up-He-Sees-Me-Down"
+        flag = flags['uplow']
 
         # Define the number of words used for this challenge
         num_words = 20
@@ -289,7 +290,7 @@ class UpperAndLower2(ChallengeAbstract):
 
     def run(self):
         # Define the challenge's flag
-        flag = "Up-With-Balloons"
+        flag = flags[flag2]
 
         # Define the number of words used for this challenge
         num_words = 20
@@ -380,7 +381,7 @@ class Copycat(ChallengeAbstract):
 
     def run(self):
         # Define the challenge's flag
-        flag = "Stop-Copying-Me-Squawk"
+        flag = flags['copycat']
 
         # Define the number of words for the challenge
         word_num = 21
@@ -497,7 +498,7 @@ class RotN(ChallengeAbstract):
 
     def run(self):
         # Define the flag
-        flag = "ROT-The-Bass!"
+        flag = flags['rotten']
 
         # Define the number of words for each rot-n cypher
         word_num = 14
@@ -580,7 +581,7 @@ class WordAssociation(ChallengeAbstract):
 
     def run(self):
         # Define the flag
-        flag = "Flagadidou-that-was-fun"
+        flag = flags['wordassociation']
 
         # Define the total number of association questions for the game
         num_associations = 500
@@ -714,7 +715,7 @@ class RotTheBass(ChallengeAbstract):
 
     def run(self):
         # Define the flag for the challenge
-        flag = "T-Shirts-are-hard..."
+        flag = flags['rotbass']
 
         # Define the number of the words for the challenge
         num_words = 2
@@ -793,16 +794,16 @@ class Substitution(ChallengeAbstract):
 
     def run(self):
         # Define the challenge's flag
-        flag = "Just-In-Time-Sub-Cipher"
+        flag = flags['subcipher']
 
         # Define standard charset
         char_set = "ABCDEFGHIJKMNOPQRSTUVWXYZ"
 
         # Define the time limit for completing the challenge
-        time_threshold = 2
+        time_threshold = 3
 
         # Define the number of words for the challenge
-        num_words = 30
+        num_words = 15
 
         # Keep running until the challenge is done
         while True:
@@ -866,6 +867,7 @@ class Substitution(ChallengeAbstract):
 
         # Create flag message with completion of message
         server_response = "Here is your flag -> {}\n".format(flag)
+        server_response += "you solved in <{}>!\n".format(response_time)
 
         # Send the flag message
         self.send(server_response.encode())

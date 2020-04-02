@@ -584,10 +584,10 @@ class WordAssociation(ChallengeAbstract):
         flag = flags['wordassociation']
 
         # Define the total number of association questions for the game
-        num_associations = 500
+        num_associations = 50
 
         # Define the threshold for the number of concurrent right answers for the flag
-        flag_threshold = 200
+        flag_threshold = 50
 
         # Define the threshold for the number of concurrent wrong answers for reset
         reset_threshold = 50

@@ -121,20 +121,20 @@ if __name__=="__main__":
 
     #choose the level to run
     challengetext=Challenge.select_level('7')
-    print('\nChallenge Text is:\n',challengetext)
+    print('\nChallenge Text is:\n'+challengetext)
 
     #trim the text down to the problem statement
     problemtext=trim_to_input(challengetext)
-    print('\nProblem Text is:\n',problemtext)
+    print('\nProblem Text is:\n'+problemtext)
 
 
     #solve the problem
     solution=solve_problem(problemtext)
-    print('\nYour solution is:\n',solution)
+    print('\nYour solution is:\n'+solution)
 
     #submit the answer    
     result=Challenge.submit_answer(solution)
-    print('\n Result is:\n',result)
+    print('\n Result is:\n'+result)
 
 
     #close the socket at the end of the program

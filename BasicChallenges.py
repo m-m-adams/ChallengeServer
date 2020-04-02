@@ -462,39 +462,13 @@ class RotN(ChallengeAbstract):
 
     @staticmethod
     def shift_word(word, shift):
-        # Correct the shift if necessary
-        shift = shift % 26
-
-        # Create a container for the shifted word
-        shifted_word = ""
-
-        # Parse through the word and shift each letter
-        for letter in word:
-            if ord('A') <= ord(letter) <= ord('Z'):
-                # Convert the letter to a normalised integer
-                norm_letter = ord(letter) - ord('A')
-
-                # Apply the shift
-                norm_letter = (norm_letter + shift) % 26
-
-                # Un-normalise the integer back to an ascii value
-                letter = chr(norm_letter + ord('A'))
-
-            if ord('a') <= ord(letter) <= ord('z'):
-                # Convert the letter to a normalised integer
-                norm_letter = ord(letter) - ord('a')
-
-                # Apply the shift
-                norm_letter = (norm_letter + shift) % 26
-
-                # Un-normalise the integer back to an ascii value
-                letter = chr(norm_letter + ord('z'))
-
-            # Add the letter to the buffer
-            shifted_word += letter
-
-        # Return the ciphered word
-        return shifted_word
+        n = shift % 26
+        UC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.encode()
+        LC = 'abcdefghijklmnopqrstuvwxyz'.encode()
+        trans = bytes.maketrans(UC + LC, UC[n:] + UC[0:n] + LC[n:] + LC[0:n])
+        # print((UC+LC))
+        # print(UC[n:]+UC[0:n]+LC[n:]+LC[0:n])
+        return word.translate(trans)
 
     def run(self):
         # Define the flag
@@ -690,28 +664,13 @@ class RotTheBass(ChallengeAbstract):
 
     @staticmethod
     def rotn(word, shift):
-        # Create a buffer to store the results
-        buffer = ""
-
-        # Iterate through the word
-        for letter in word:
-            if ord('A') <= ord(letter) <= ord('Z'):
-                # Normalise the ascii value of chars to 0
-                norm = ord(letter) - ord('A')
-
-                # Perform the shift
-                norm = (norm + shift) % 26
-
-                # Convert the shifted value back to a char
-                new_letter = chr(norm + ord('A'))
-            else:
-                new_letter = letter
-
-            # Add the new chars to the buffer
-            buffer += new_letter
-
-        # Return the ciphered word
-        return buffer
+        n = shift % 26
+        UC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.encode()
+        LC = 'abcdefghijklmnopqrstuvwxyz'.encode()
+        trans = bytes.maketrans(UC + LC, UC[n:] + UC[0:n] + LC[n:] + LC[0:n])
+        # print((UC+LC))
+        # print(UC[n:]+UC[0:n]+LC[n:]+LC[0:n])
+        return word.translate(trans)
 
     def run(self):
         # Define the flag for the challenge

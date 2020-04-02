@@ -15,7 +15,7 @@ import select
 # receives, reset, and exit for internal use in the class.
 
 
-class ChallengeInterface(object):
+class challengeinterface(object):
     #setup the socket to connect to the challenge
     #This function has default arguments
     def __init__(self,address,port):
@@ -81,61 +81,3 @@ class ChallengeInterface(object):
 
 #end of challenge interface class
 #############################################################
-
-#############################################################
-# Function declarations                                      
-#############################################################
-
-
-# TrimToInput
-# Takes the full challenge text as input and trims it down to
-# the line that you need to work with to solve the problem
-# this is a different line in some levels, so pay attention
-
-def trim_to_input(fulltext):
-    lines=fulltext.rsplit("\n")
-    problemtext=lines[len(lines)-2] 
-    return problemtext
-
-
-# SolveProblem
-# Solve the problem in this function
-# feel free to declare more functions, but don't do it in the
-# main block of code - poor programming practice
-
-def solve_problem(problemtext):
-    answer=problemtext
-    return answer
-
-#############################################################
-# Main code starts here
-
-if __name__=="__main__":
-    
-    serverip="15.223.13.29"
-    challengeport=8001
-    
-    #start the challenge game
-    Challenge=ChallengeInterface(serverip,challengeport)
-    print(Challenge.receive())
-
-    #choose the level to run
-    challengetext=Challenge.select_level('7')
-    print('\nChallenge Text is:\n'+challengetext)
-
-    #trim the text down to the problem statement
-    problemtext=trim_to_input(challengetext)
-    print('\nProblem Text is:\n'+problemtext)
-
-
-    #solve the problem
-    solution=solve_problem(problemtext)
-    print('\nYour solution is:\n'+solution)
-
-    #submit the answer    
-    result=Challenge.submit_answer(solution)
-    print('\n Result is:\n'+result)
-
-
-    #close the socket at the end of the program
-    Challenge.exit()

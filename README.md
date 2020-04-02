@@ -1,5 +1,10 @@
 # ScriptingServer
 python scripting server
+
+In the solutions folder you'll find challengeinterface.py and startersolution.py
+The challenge interface opens the socket to the challenge server and handles latency issues
+If you write your own interface and your code doesn't work the first step will be using the provided one
+
 Challengeinterface:
 
 Initiate the challenge by calling challenge=ChallengeClient.challengeinterface(destination,destinationport)
@@ -15,11 +20,6 @@ There are other methods in the challenge interface class but they are not necess
 
 
 Hints:
-
-Overall:
-In the solutions folder you'll find challengeinterface.py and startersolution.py
-The challenge interface opens the socket to the challenge server and handles latency issues
-If you write your own interface and your code doesn't work the first step will be using the provided one
 
 Problem 1:
 You can solve this most easily using regex or a filter

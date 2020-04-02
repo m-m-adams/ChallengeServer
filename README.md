@@ -1,8 +1,8 @@
 # ScriptingServer
 python scripting server
 
-In the solutions folder you'll find challengeinterface.py and startersolution.py
-The challenge interface opens the socket to the challenge server and handles latency issues
+In the solutions folder you'll find challengeinterface.py and startersolution.py. 
+The challenge interface opens the socket to the challenge server and handles latency issues. 
 If you write your own interface and your code doesn't work the first step will be using the provided one
 
 Challengeinterface:

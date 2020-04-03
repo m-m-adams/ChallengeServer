@@ -20,20 +20,20 @@ There are other methods in the challenge interface class but they are not necess
 
 Hints:
 
-Problem 1:
+Problem 1:  
 You can solve this most easily using regex or a filter
 It's also possible to loop through the string and reconstruct a new 'cleaned' string
 
-Problem 2:
+Problem 2:  
 Try sorting all the words in the answer into an upper list and a lower list
 
-Problem 3:
+Problem 3:  
 This problem is testing your ability to repeatedly parse a word out of the challenge response and resubmit it
 
-Problem 4:
+Problem 4:  
 Some words will have multiple possible candidates - you might need to decipher 55-60 phrases in order to get 50 correct answers.  
 
-Problem 5:  
+Problem 5:   
 At the beginning you know none of the word associations. Each time you submit an incorrect answer, you'll be given the correct assocation. Use this to build out a dictionary of word associations that you know and if you are given a word that's in your dictionary, return it  
 
 Problem 6:  

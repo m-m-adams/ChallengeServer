@@ -15,10 +15,13 @@ Submit an answer with challenge.submit_answer(answer). The return value is the r
 
 Note that in many challenges the return value is a new problem that must be solved to get the flag. When you have a flag, the return will include the string 'Here is your flag:' 
 
-There are other methods in the challenge interface class but they are not necessary to solve any problems
+There are other methods in the challenge interface class but they are not necessary to solve any problems  
 
 
-Hints:
+Hints:  
+
+General:  
+The last character of all returns from the challenge server is "\n". Be aware of this when you're parsing out the problem
 
 Problem 1:  
 You can solve this most easily using regex or a filter

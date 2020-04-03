@@ -759,7 +759,7 @@ class Substitution(ChallengeAbstract):
         char_set = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
         # Define the time limit for completing the challenge
-        time_threshold = 3
+        time_threshold = 5
 
         # Define the number of words for the challenge
         num_words = 15

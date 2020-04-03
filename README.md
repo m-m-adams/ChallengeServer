@@ -31,3 +31,15 @@ Problem 3:
 This problem is testing your ability to repeatedly parse a word out of the challenge response and resubmit it
 
 Problem 4:
+Some words will have multiple possible candidates - you might need to decipher 55-60 phrases in order to get 50 correct answers.  
+
+Problem 5:  
+At the beginning you know none of the word associations. Each time you submit an incorrect answer, you'll be given the correct assocation. Use this to build out a dictionary of word associations that you know and if you are given a word that's in your dictionary, return it  
+
+Problem 6:  
+If you try to bruteforce the case of the entire base64 encoded phrase at once, it's going to need a supercomputer. Use the fact that 4 base64 digits always decode to the same 3 input bytes, and brute force it piecewise
+
+Problem 7:  
+1. It's not a rot cipher, it's making a random reorder of the alphabet and using that as the substiution table.  
+2. Don't try to brute force this - a 26 letter key is about 100 bits, and 2^100 operations is well beyond what you can run on a home computer. It is possible to deterministically decrypt a random sub cipher if the input is long enough, and it is in this challenge.
+

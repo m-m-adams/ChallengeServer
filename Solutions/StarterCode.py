@@ -35,7 +35,7 @@ def solve_problem(problemtext):
 
 if __name__=="__main__":
     level='1'
-    serverip="15.223.13.29"
+    serverip="1.2.3.4"
     challengeport=8001
     
     #start the challenge game

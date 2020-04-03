@@ -756,7 +756,7 @@ class Substitution(ChallengeAbstract):
         flag = flags['subcipher']
 
         # Define standard charset
-        char_set = "ABCDEFGHIJKMNOPQRSTUVWXYZ"
+        char_set = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
         # Define the time limit for completing the challenge
         time_threshold = 3

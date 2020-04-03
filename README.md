@@ -37,7 +37,8 @@ Problem 4:
 Some words will have multiple possible candidates - you might need to decipher 55-60 phrases in order to get 50 correct answers.  
 
 Problem 5:   
-At the beginning you know none of the word associations. Each time you submit an incorrect answer, you'll be given the correct assocation. Use this to build out a dictionary of word associations that you know and if you are given a word that's in your dictionary, return it  
+At the beginning you know none of the word associations. Each time you submit an incorrect answer, you'll be given the correct assocation. Use this to build out a dictionary of word associations that you know.  
+The word list is reset everytime you close the socket, so keep the challenge open the whole time you're building out the wordlist.
 
 Problem 6:  
 If you try to bruteforce the case of the entire base64 encoded phrase at once, it's going to need a supercomputer. Use the fact that 4 base64 digits always decode to the same 3 input bytes, and brute force it piecewise

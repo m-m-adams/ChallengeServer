@@ -387,7 +387,7 @@ class Copycat(ChallengeAbstract):
         word_num = 21
 
         # Define the number of correct consecutive answers for the flag
-        answer_threshold = 100
+        answer_threshold = 50
 
         # Define a contaienr to keep track the number of consecutive correct answers
         correct_answer_counter = 0

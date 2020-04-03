@@ -41,5 +41,5 @@ If you try to bruteforce the case of the entire base64 encoded phrase at once, i
 
 Problem 7:  
 It's not a rot cipher, it's making a random reorder of the alphabet and using that as the substiution table.  
-Don't try to brute force this - a 26 letter key is about 100 bits, and 2^100 operations is well beyond what you can run on a home computer. It is possible to deterministically decrypt a random sub cipher if the input is long enough, and it is in this challenge.
+Don't try to brute force this - there are 26! possible keys, brute forcing it is going to take about 10^13 years. It is possible to deterministically decrypt a random sub cipher if the input is long enough, and it is in this challenge.
 

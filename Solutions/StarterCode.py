@@ -1,7 +1,7 @@
 import socket
 import time
 import select
-from ChallengeServer.Solutions.ChallengeClient import challengeinterface
+from ChallengeClient import challengeinterface
 
 
 #############################################################

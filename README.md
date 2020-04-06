@@ -24,7 +24,7 @@ General:
 The last character of all returns from the challenge server is "\n". Be aware of this when you're parsing out the problem
 
 Problem 1:  
-You can solve this most easily using regex or a filter
+You can solve this most easily using regex or a filter.  
 It's also possible to loop through the string and reconstruct a new 'cleaned' string
 
 Problem 2:  

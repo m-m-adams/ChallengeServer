@@ -108,7 +108,7 @@ class GarbageChars(ChallengeAbstract):
 
     def run(self):
         # Define the flag
-        flag = "Garbage-Removal-Via-Script"
+        flag = flags['garbage']
 
         # Define the number of words for the challenge
         number_of_words = 6

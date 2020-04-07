@@ -40,7 +40,7 @@ if __name__=="__main__":
     
     #start the challenge game
     challenge=challengeinterface(serverip,challengeport)
-    print(challenge.receive())
+    print(challenge.start())
 
     #choose the level to run
     challengetext=challenge.select_level(level)

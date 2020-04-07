@@ -44,6 +44,6 @@ Problem 6:
 If you try to bruteforce the case of the entire base64 encoded phrase at once, it's going to need a supercomputer. Use the fact that 4 base64 digits always decode to the same 3 input bytes, and brute force it piecewise
 
 Problem 7:  
-It's not a rot cipher, it's making a random reorder of the alphabet and using that as the substiution table. The entire phrase is using the same substitution table. Both statistical and deterministic approaches exist to break sub ciphers.  
+It's not a rot cipher, it's making a random reorder of the alphabet and using that as the substiution table. The entire phrase is using the same substitution table. Both statistical and deterministic approaches exist to break sub ciphers, but as this problem isn't a realistic sample of english text statistical approaches will be tough.   
 Don't try to brute force this - there are 26! possible keys, brute forcing it is going to take about 10^13 years. It is possible to deterministically decrypt a random sub cipher if the input is long enough, and it is in this challenge.
 

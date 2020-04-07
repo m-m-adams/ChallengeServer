@@ -15,6 +15,8 @@ class Server:
         # Set number of listeners
         self.s.listen(50)
 
+
+
     def accept_connection(self):
         # Block until connection accepted
         client_s, client_addr = self.s.accept()

@@ -34,7 +34,18 @@ class ScriptingVault:
             # Keep running server until the server is stopped
             while True:
                 # Wait for connection
-                client = self.server.accept_connection()
+                FoundClient=False
+                self.server.s.settimeout(2)
+                while not FoundClient:
+                    try:
+                        client = self.server.accept_connection()
+                        FoundClient = True
+                    except socket.timeout:
+                        pass
+                    except KeyboardInterrupt:
+                        print('user interrupt, server closing')
+                        self.server.s.close()
+                        sys.exit()
 
 
                 # Retrieve connection information
@@ -52,7 +63,7 @@ class ScriptingVault:
                 thread.start()
         except KeyboardInterrupt:
             print('user interrupt, server closing')
-            self.server.close()
+            self.server.s.close()
             sys.exit()
 
 

@@ -7,7 +7,9 @@ If you write your own interface and your code doesn't work the first step will b
 
 Challengeinterface:
 
-Initiate the challenge by calling challenge=ChallengeClient.challengeinterface(destination,destinationport)
+Initiate the challenge by calling challenge=ChallengeClient.challengeinterface(destination,destinationport)  
+
+Start the challenge by calling challenge.start()
 
 select your level with challengetext=challenge.select_level(level). The return value is the text for the selected level
 

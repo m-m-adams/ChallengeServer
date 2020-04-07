@@ -396,7 +396,7 @@ class Copycat(ChallengeAbstract):
         message = ""
         message += "Let's play a game of copycat! "
         message += "Your job is to just simply repeat back to me the list of words I send you.\n"
-        message += "You must do this consecutively and correctly for a total of <{}> times.\n".format(answer_threshold)
+        message += "You must do this correctly <{}> times.\n".format(answer_threshold)
 
         # Send the instructions message
         self.send(message.encode())
@@ -405,7 +405,7 @@ class Copycat(ChallengeAbstract):
         while True:
             # Create the status update message
             message = ""
-            message += "You have sent me <{}> responses in a row correctly.\n".format(correct_answer_counter)
+            message += "You have sent me <{}> responses correctly.\n".format(correct_answer_counter)
 
             # Send the status update message
             self.send(message.encode())
@@ -436,7 +436,7 @@ class Copycat(ChallengeAbstract):
                 message += "Sorry the answer was: {}\n".format(answer)
 
                 # Set the tracker to 0
-                correct_answer_counter = 0
+                #correct_answer_counter = 0
 
             # Send the server's response
             self.send(message.encode())

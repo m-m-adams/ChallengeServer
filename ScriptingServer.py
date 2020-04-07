@@ -30,23 +30,31 @@ class ScriptingVault:
     def run(self):
         # Display running state
         print("Notice: Server is now <Running>")
+        try:
+            # Keep running server until the server is stopped
+            while True:
+                # Wait for connection
+                client = self.server.accept_connection()
 
-        # Keep running server until the server is stopped
-        while True:
-            # Wait for connection
-            client = self.server.accept_connection()
 
-            # Retrieve connection information
-            ip_addr, port_num = client.get_addr()
+                # Retrieve connection information
+                ip_addr, port_num = client.get_addr()
 
-            # Display new connection
-            print("Notice: Connection received from <{}:{}>".format(ip_addr, port_num))
+                # Display new connection
+                print("Notice: Connection received from <{}:{}>".format(ip_addr, port_num))
 
-            # Create thread for new client
-            thread = threading.Thread(target=self.client_thread, args=(client,))
+                # Create thread for new client
+                thread = threading.Thread(target=self.client_thread, args=(client,))
 
-            # Run thread
-            thread.start()
+                #make the thread a daemon so it exits when the main program does
+                thread.isDaemon()
+                # Run thread
+                thread.start()
+        except KeyboardInterrupt:
+            print('user interrupt, server closing')
+            self.server.close()
+            sys.exit()
+
 
     def client_thread(self, client):
         try:
@@ -105,4 +113,7 @@ if __name__ == '__main__':
     script_vault = ScriptingVault(SERVER_BIND_ADDR, SERVER_PORT)
 
     # Run server
+
     script_vault.run()
+
+

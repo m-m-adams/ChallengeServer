@@ -21,6 +21,8 @@ class Server:
         # Block until connection accepted
         client_s, client_addr = self.s.accept()
 
+        #give the client socket a timeout
+        client_s.settimeout(30)
         # Create a client communication interface
         client_interface = Client(client_s, client_addr)
 

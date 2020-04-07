@@ -20,11 +20,13 @@ class challengeinterface(object):
     #This function has default arguments
     def __init__(self,address,port):
         sock=socket.socket()
-        sock.connect((address,port))
         self.address=address
         self.port=port
         self.sock=sock
 
+    def start(self):
+        self.sock.connect((self.address, self.port))
+        return self.receive()
     #accept a level and a challenge socket as
     #input, select the level and return its text
     def select_level(self,level):
@@ -61,19 +63,23 @@ class challengeinterface(object):
     # repeats until the socket has no more data
     # 0.15 second wait each loop accounts for latency on the
     # server side - it's an AWS t2.nano instance......
-    def receive(self):
+    # default to receiving until it receives 'END MESSAGE\n', as sent by the server's communications.py
+    def receive(self, terminator='END MESSAGE\n'):
         do_read = True
         receiveddata=''
-        while (do_read):
+        while not receiveddata.endswith(terminator):
             try:
+                # select.select will return true if there is data on the socket
+                # this prevents the recv function from blocking
                 r, _, _ = select.select([self.sock], [], [],0.15)
+
                 do_read = bool(r)
             except socket.error:
                 pass
             if do_read:
                 data = self.sock.recv(1024).decode()
                 receiveddata+=data
-        return receiveddata
+        return receiveddata[:-12]
     
     #generic socket close
     def exit(self):

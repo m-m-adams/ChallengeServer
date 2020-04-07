@@ -145,15 +145,15 @@ class GarbageChars(ChallengeAbstract):
             challenge = " ".join(garbage_words) + '\n'
 
             # Create the instructions
-            message = ""
+            message = "Here is your level 1 challenge!\n\n"
             message += "Remove the numbers and special characters (except for spaces) from the string "
             message += "and send it back to recieve a flag. You have 2 seconds to respond.\n"
 
             # Send the instructions
-            self.send(message.encode())
+            #self.send(message.encode())
 
             # Send the challenge itself
-            self.send(challenge.encode())
+            self.send((message+challenge).encode())
 
             # Start the timer
             start_time = time.time()
@@ -210,14 +210,14 @@ class UpperAndLower(ChallengeAbstract):
         num_words = 20
 
         # Create the instructions message
-        message = ""
+        message = "Here is your level 2 challenge!\n\n"
         message += "Let's play a game of upper and lower! "
         message += "I will send you a list of words. "
         message += "Within the list, one of the words will either be the unique lowercase or lowercase word.\n"
         message += "Send back the unique word in the list for the flag!\n"
 
         # Send the instructions
-        self.send(message.encode())
+        #self.send(message.encode())
 
         # Keep running until the challenge is done
         while True:
@@ -257,7 +257,7 @@ class UpperAndLower(ChallengeAbstract):
             challenge = " ".join(selected_words) + '\n'
 
             # Send the message
-            self.send(challenge.encode())
+            self.send((message+challenge).encode())
 
             # Receive the client's response
             client_response = self.recv().decode()
@@ -270,7 +270,7 @@ class UpperAndLower(ChallengeAbstract):
                 message = "Try again! The answer was <{}>\n".format(answer)
 
                 # Send the server response
-                self.send(message.encode())
+                #self.send(message.encode())
 
         # Create flag message with completion of message
         server_response = "Here is your flag -> {}\n".format(flag)
@@ -393,53 +393,53 @@ class Copycat(ChallengeAbstract):
         correct_answer_counter = 0
 
         # Create the instructions message
-        message = ""
+        message = "Here is your level 3 challenge!\n\n"
         message += "Let's play a game of copycat! "
         message += "Your job is to just simply repeat back to me the list of words I send you.\n"
         message += "You must do this correctly <{}> times.\n".format(answer_threshold)
 
         # Send the instructions message
-        self.send(message.encode())
+        #self.send(message.encode())
 
         # Keep running until he challenge is done
         while True:
             # Create the status update message
-            message = ""
+
             message += "You have sent me <{}> responses correctly.\n".format(correct_answer_counter)
 
             # Send the status update message
-            self.send(message.encode())
+            #self.send(message.encode())
 
             # Randomly select the words
             selected_words = [WORD_LIST[random.randint(0, len(WORD_LIST) - 1)] for _ in range(0, word_num)]
 
             # Create the answer and challenge
             answer = " ".join(selected_words)
-            challenge = answer + '\n'
+            challenge = message+answer + '\n'
 
             # Send the challenge
-            self.send(challenge.encode())
-
+            self.send((challenge).encode())
+            message=""
             # Receive the client's response
             client_response = self.recv().decode()
 
             if client_response.strip() == answer:
                 # Create the server's response
-                message = ""
+                #message = ""
                 message += "Correct!\n"
 
                 # Increment the tracker
                 correct_answer_counter += 1
             else:
                 # Create the server's response
-                message = ""
+                #message = ""
                 message += "Sorry the answer was: {}\n".format(answer)
 
                 # Set the tracker to 0
                 #correct_answer_counter = 0
 
             # Send the server's response
-            self.send(message.encode())
+            #self.send(message.encode())
 
             # Once the threshold is met, exit the challenge
             if correct_answer_counter == answer_threshold:
@@ -484,22 +484,22 @@ class RotN(ChallengeAbstract):
         correct_answer_count = 0
 
         # Create the instructions
-        message = ""
+        message = "Here is your level 4 challenge!\n\n"
         message += "I have ROT-N ciphered some random words. Each word has a different shift. "
         message += "Decipher them and send them back\n"
 
         # Send the instructions
-        self.send(message.encode())
+        #self.send(message.encode())
 
         # Keep running until the challenge is complete
         while correct_answer_count < correct_answer_threshold:
             # Create the status update message
-            message = ""
+            #message = ""
             message += "You have answered {}/50 correctly\n".format(correct_answer_count)
             message += "Decrypt this and send it back: \n"
 
             # Send the status update
-            self.send(message.encode())
+            #self.send(message.encode())
 
             # Randomly choose word list indices to get words from
             indices_list = [random.randint(0, len(self.word_list) - 1) for _ in range(0, word_num)]
@@ -517,7 +517,7 @@ class RotN(ChallengeAbstract):
             challenge = " ".join(selected_words) + '\n'
 
             # Send the challenge
-            self.send(challenge.encode())
+            self.send((message+challenge).encode())
 
             # Receive the response
             client_response = self.recv().decode()
@@ -525,18 +525,19 @@ class RotN(ChallengeAbstract):
             # Validate the client's response
             if client_response == answer:
                 # Create the server's response
-                server_response = "Correct!\n".format(flag)
+                message=''
+                message += "Correct!\n".format(flag)
 
                 # Increment the correct answer counter
                 correct_answer_count += 1
             else:
                 # Create the server's response
-                server_response = ""
-                server_response += "Sorry <{}> was incorrect, ".format(client_response)
-                server_response += "the correct answer was <{}>\n".format(answer)
+                message = ""
+                message += "Sorry <{}> was incorrect, ".format(client_response)
+                message += "the correct answer was <{}>\n".format(answer)
 
             # Send the response
-            self.send(server_response.encode())
+            #self.send(server_response.encode())
 
         # Create flag message with completion of message
         server_response = "Here is your flag -> {}\n".format(flag)
@@ -577,7 +578,7 @@ class WordAssociation(ChallengeAbstract):
         word_set = [WORD_LIST[_] for _ in random_indices]
 
         # Create the instructions
-        message = ""
+        message = "Here is your level 5 challenge!\n\n"
         message += "Lets play a game of Word Association to test your (virtual) memory! "
         message += "To get the flag, you need to get {} correct associations in a row. \n".format(flag_threshold)
         message += "If you get more than {} associations wrong in a row, the game will reset. ".format(reset_threshold)
@@ -585,49 +586,49 @@ class WordAssociation(ChallengeAbstract):
         message += "Now lets begin!\n"
 
         # Send the instructions
-        self.send(message.encode())
+        #self.send(message.encode())
 
         # Keep running until flag conditions met
         while num_correct_answers < flag_threshold:
             # Create update message
-            message = ""
+            #message = ""
             message += "You have {}/{} consecutive correct answers ".format(num_correct_answers, flag_threshold)
             message += "and {}/{} consecutive incorrect ones!\n".format(num_wrong_answers, reset_threshold)
 
             # Send the update message
-            self.send(message.encode())
+            #self.send(message.encode())
 
             # Grab a word pair
             random_index = random.randint(0, num_associations - 1) * 2
             word_association = (word_set[random_index], word_set[random_index + 1])
 
             # Create the challenge question
-            message = ""
+            #message = ""
             message += "{}?\n".format(word_association[0])
 
             # Send the challenge
             self.send(message.encode())
-
+            message=''
             # Get the response
             client_response = self.recv().decode()
 
             # Validate the client's response
             if client_response == word_association[1]:
                 # Create the server response message
-                message = "Correct!\n"
+                message += "Correct!\n"
 
                 # Send the message
-                self.send(message.encode())
+                #self.send(message.encode())
 
                 # Adjust the counters
                 num_wrong_answers = 0
                 num_correct_answers += 1
             else:
                 # Create the server response message
-                message = "Incorrect! The answer was {}\n".format(word_association[1])
+                message += "Incorrect! The answer was {}\n".format(word_association[1])
 
                 # Send the message
-                self.send(message.encode())
+                #self.send(message.encode())
 
                 # Adjust the counters
                 num_wrong_answers += 1
@@ -683,13 +684,13 @@ class RotTheBass(ChallengeAbstract):
         time_threshold = 2
 
         # Create instruction message
-        message = ""
+        message = "Here is your level 6 challenge!\n\n"
         message += "I have encoded <{}> words seperated by a space in the following method: ".format(num_words)
         message += "uppercase word -> base64 -> rot-N -> uppercase\n"
         message += "Send back the decoded message in <{}> seconds for a flag\n".format(time_threshold)
 
         # Send the instruction message
-        self.send(message.encode())
+        #self.send(message.encode())
 
         # Keep running until challenge completed
         while True:
@@ -709,7 +710,7 @@ class RotTheBass(ChallengeAbstract):
 
 
             # Send the challenge
-            self.send(challenge.encode())
+            self.send((message+challenge).encode())
 
             # Get the start time
             start_time = time.time()
@@ -734,7 +735,7 @@ class RotTheBass(ChallengeAbstract):
                 message = "Sorry, the correct answer was {}\n".format(answer)
 
             # Send the response
-            self.send(message.encode())
+            #self.send(message.encode())
 
         # Create flag message with completion of message
         server_response = "Here is your flag -> {}\n".format(flag)
@@ -763,16 +764,16 @@ class Substitution(ChallengeAbstract):
 
         # Define the number of words for the challenge
         num_words = 15
-
+        message = "Here is your level 7 challenge!\n\n"
         # Keep running until the challenge is done
         while True:
             # Create the instructions message
-            message = ""
+
             message += "I have applied a substitution cipher to a string of random words, "
             message += "decipher it correctly for a flag, you have <{}> seconds\n".format(time_threshold)
 
             # Send the instructions
-            self.send(message.encode())
+            #self.send(message.encode())
 
             # Grab a randomised list of words from the word list
             random_words = " ".join([WORD_LIST[random.randint(0, len(WORD_LIST) - 1)] for _ in range(num_words)])
@@ -791,8 +792,8 @@ class Substitution(ChallengeAbstract):
             challenge = "".join([translator[char] if char in translator else char for char in random_words]) + '\n'
 
             # Send the challenge
-            self.send(challenge.encode())
-
+            self.send((message+challenge).encode())
+            message=''
             # Start the timer
             start_time = time.time()
 
@@ -808,21 +809,21 @@ class Substitution(ChallengeAbstract):
                 break
             elif client_response == answer and response_time > time_threshold:
                 # Create the server response message
-                server_response = ""
-                server_response += "You were correct... "
-                server_response += "but too slow with a response time of <{}>!\n".format(response_time)
-                server_response += "The correct response was <{}>\n".format(answer)
+                message = ""
+                message += "You were correct... "
+                message += "but too slow with a response time of <{}>!\n".format(response_time)
+                message += "The correct response was <{}>\n".format(answer)
 
                 # Send the server response message
-                self.send(server_response.encode())
+                #self.send(server_response.encode())
 
             else:
                 # Create the server response message
-                server_response = ""
-                server_response += "Your answer was incorrect, the correct response was {}\n".format(answer)
+                message = ""
+                message += "Your answer was incorrect, the correct response was {}\n".format(answer)
 
                 # Send the server response message
-                self.send(server_response.encode())
+                #self.send(server_response.encode())
 
         # Create flag message with completion of message
         server_response = "Here is your flag -> {}\n".format(flag)

@@ -43,6 +43,7 @@ class Client:
     def send(self, byte_message):
         # Send message to client
         self.client_s.sendall(byte_message)
+        self.client_s.sendall('END MESSAGE\n'.encode())
 
     def recv(self):
         # Recv message from client

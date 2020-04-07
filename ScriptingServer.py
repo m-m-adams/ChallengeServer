@@ -41,6 +41,7 @@ class ScriptingVault:
                         client = self.server.accept_connection()
                         FoundClient = True
                     except socket.timeout:
+                        # don't do anything but also don't print the error
                         pass
                     except KeyboardInterrupt:
                         print('user interrupt, server closing')
@@ -90,10 +91,10 @@ class ScriptingVault:
                 # Send appropriate response to client selection
                 if challenge_class is not None:
                     # Create success message for client
-                    server_response = "Here is your level <{}> challenge!\n".format(client_response)
-
+                    #server_response = "Here is your level <{}> challenge!\n".format(client_response)
+                    pass
                     # Send success message to client
-                    client.send(server_response.encode())
+                    #client.send(server_response.encode())
                 else:
                     # Create error message for client
                     server_response = "Sorry, but <{}> is not a valid selection! Please try again!\n".format(

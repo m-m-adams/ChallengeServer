@@ -65,7 +65,7 @@ class challengeinterface(object):
     # server side - it's an AWS t2.nano instance......
     # default to receiving until it receives 'END MESSAGE\n', as sent by the server's communications.py
     def receive(self, terminator='END MESSAGE\n'):
-        do_read = True
+        do_read = False
         receiveddata=''
         while not receiveddata.endswith(terminator):
             try:

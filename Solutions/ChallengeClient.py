@@ -79,7 +79,7 @@ class challengeinterface(object):
             if do_read:
                 data = self.sock.recv(1024).decode()
                 receiveddata+=data
-        return receiveddata[:-12]
+        return receiveddata.replace('END MESSAGE\n','')
     
     #generic socket close
     def exit(self):

@@ -9,7 +9,7 @@ Challengeinterface:
 
 Initiate the challenge by calling challenge=ChallengeClient.challengeinterface(destination,destinationport)  
 
-Start the challenge by calling challenge.start()
+Start the challenge by calling challenge.start(), the return value is the first message from the server
 
 select your level with challengetext=challenge.select_level(level). The return value is the text for the selected level
 

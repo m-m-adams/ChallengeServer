@@ -213,7 +213,7 @@ class UpperAndLower(ChallengeAbstract):
         message = "Here is your level 2 challenge!\n\n"
         message += "Let's play a game of upper and lower! "
         message += "I will send you a list of words. "
-        message += "Within the list, one of the words will either be the unique lowercase or lowercase word.\n"
+        message += "Within the list, one of the words will either be the unique uppercase or lowercase word.\n"
         message += "Send back the unique word in the list for the flag!\n"
 
         # Send the instructions
